@@ -27,13 +27,13 @@ export default function page() {
     }
   });
 
-  const handleSendMessage = (e: any) => {
+  const handleSendMessage = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault(); // prevent the default form behavior of (submitting)
-    // to display the input message as a recent chat
     if (input.trim() !== "") {
-      setRecentChats((prev) => [{ question: input, answer: "" }, ...prev]);
+      setRecentChats((prev) => [{ question: input, answer: "" }, ...prev]); // pass the input message to recent chat array
+      setInput(""); // clear the input field
     }
-    // handleSubmit(); // send chat to the api
+    handleSubmit(e); // send chat to the api
   };
 
   const suggestionQuestions = [
@@ -44,7 +44,6 @@ export default function page() {
 
   return (
     <main className="flex w-full h-screen max-h-dvh bg-background">
-      {/* sidebar */}
       <Sidebar recentChats={recentChats} />
 
       {/* chat section */}

@@ -15,9 +15,9 @@ export default function Sidebar({
   const { data: session } = useSession();
 
   return (
-    <aside className="h-full border border-gray-200 w-[320px] p-4 flex flex-col justify-between">
+    <aside className="max-h-screen border border-gray-200 w-[320px] p-4 flex flex-col justify-between">
       {/* top - title + chats */}
-      <div className="flex flex-col gap-4">
+      <div className="flex-1 flex overflow-y-auto flex-col gap-4">
         {/* name */}
         <div className="w-full flex justify-between items-center">
           <h3 className="font-bold text-xl">Wise AI</h3>
@@ -25,7 +25,7 @@ export default function Sidebar({
         </div>
 
         {/* recent chats */}
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 flex-1">
           <h3 className="font-bold">Chats</h3>
           {recentChats && recentChats.length > 0 ? (
             recentChats.map((chat, i) => (
